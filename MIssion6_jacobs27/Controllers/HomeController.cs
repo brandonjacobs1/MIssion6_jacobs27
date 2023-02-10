@@ -13,10 +13,11 @@ namespace MIssion6_jacobs27.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private MovieContext _movieContext { get; set; }
+        public HomeController(ILogger<HomeController> logger, MovieContext MovieContext)
         {
             _logger = logger;
+            _movieContext = MovieContext;
         }
 
         public IActionResult Index()
@@ -34,8 +35,10 @@ namespace MIssion6_jacobs27.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult MovieForm (Movie m)
+        public IActionResult MovieForm (Movie movie)
         {
+            _movieContext.Add(movie);
+            _movieContext.SaveChanges();
             return View();
         }
 
