@@ -12,17 +12,66 @@ namespace MIssion6_jacobs27.Models
         {
 
         }
-        public DbSet<Movie> Responses { get; set; }
+        
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        //seeding
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryID = 1,
+                    CategoryName = "Action/Adventure"
+                },
+                new Category
+                {
+                    CategoryID = 2,
+                    CategoryName = "Comedy"
+                },
+                new Category
+                {
+                    CategoryID = 3,
+                    CategoryName = "Drama"
+                },
+                new Category
+                {
+                    CategoryID = 4,
+                    CategoryName = "Family"
+                },
+                new Category
+                {
+                    CategoryID = 5,
+                    CategoryName = "Horror/Suspense"
+                },
+                new Category
+                {
+                    CategoryID = 6,
+                    CategoryName = "Miscellaneous"
+                },
+                new Category
+                {
+                    CategoryID = 7,
+                    CategoryName = "Television"
+                },
+                new Category
+                {
+                    CategoryID = 8,
+                    CategoryName = "VHS"
+                },
+                new Category
+                {
+                    CategoryID = 9,
+                    CategoryName = "Other"
+                });
             mb.Entity<Movie>().HasData(
                 new Movie
                 {
                     MovieID = 2,
                     Title = "Starwars: Episode 2 - Attack of the Clones",
                     Year = "2002",
-                    Category = "Sci-FI",
+                    CategoryID = 1,
                     Director = "George Lucas",
                     Rating = "PG",
                     Edited = false,
@@ -34,7 +83,7 @@ namespace MIssion6_jacobs27.Models
                     MovieID = 1,
                     Title = "Starwars: Episode 1 - The Phantom Menace",
                     Year = "1999",
-                    Category = "Sci-FI",
+                    CategoryID = 1,
                     Director = "George Lucas",
                     Rating = "PG",
                     Edited = false,
@@ -46,7 +95,7 @@ namespace MIssion6_jacobs27.Models
                     MovieID = 3,
                     Title = "Starwars: Episode 3 - Revenge of the Sith",
                     Year = "2005",
-                    Category = "Sci-FI",
+                    CategoryID = 1,
                     Director = "George Lucas",
                     Rating = "PG",
                     Edited = false,

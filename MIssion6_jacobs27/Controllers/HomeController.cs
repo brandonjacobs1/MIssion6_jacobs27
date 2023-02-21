@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MIssion6_jacobs27.Models;
 using System;
@@ -24,7 +25,7 @@ namespace MIssion6_jacobs27.Controllers
         {
             return View();
         }
-
+        //call podcasts page
         public IActionResult Podcasts()
         {
             return View();
@@ -32,8 +33,10 @@ namespace MIssion6_jacobs27.Controllers
         [HttpGet]
         public IActionResult MovieForm()
         {
+            ViewBag.Categories = _movieContext.Categories.ToList();
             return View();
         }
+        //store data from form
         [HttpPost]
         public IActionResult MovieForm (Movie movie)
         {
@@ -46,6 +49,13 @@ namespace MIssion6_jacobs27.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult MovieList()
+        {
+            List<Movie> movies = _movieContext.Movies
+                .Include(mov => mov.Category)
+                .ToList();
+            return View(movies);
         }
     }
 }

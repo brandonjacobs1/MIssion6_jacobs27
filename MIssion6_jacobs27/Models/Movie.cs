@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MIssion6_jacobs27.Models
 {
+    //movie model
     public class Movie
     {
         [Key]
@@ -21,11 +22,14 @@ namespace MIssion6_jacobs27.Models
         [Required]
         public string Rating { get; set; }
         [Required]
-        public string Category { get; set; }
-        [Required]
         public string LentTo { get; set; }
         public bool Edited { get; set; }
         [StringLength(25)]
         public string Notes { get; set; }
+        [Required]
+
+        //FK
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

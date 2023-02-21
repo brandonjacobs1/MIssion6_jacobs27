@@ -15,15 +15,75 @@ namespace MIssion6_jacobs27.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.32");
 
+            modelBuilder.Entity("MIssion6_jacobs27.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "VHS"
+                        },
+                        new
+                        {
+                            CategoryID = 9,
+                            CategoryName = "Other"
+                        });
+                });
+
             modelBuilder.Entity("MIssion6_jacobs27.Models.Movie", b =>
                 {
                     b.Property<int>("MovieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -54,13 +114,15 @@ namespace MIssion6_jacobs27.Migrations
 
                     b.HasKey("MovieID");
 
-                    b.ToTable("Responses");
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("Movies");
 
                     b.HasData(
                         new
                         {
                             MovieID = 2,
-                            Category = "Sci-FI",
+                            CategoryID = 1,
                             Director = "George Lucas",
                             Edited = false,
                             LentTo = "Brandon Jacobs",
@@ -72,7 +134,7 @@ namespace MIssion6_jacobs27.Migrations
                         new
                         {
                             MovieID = 1,
-                            Category = "Sci-FI",
+                            CategoryID = 1,
                             Director = "George Lucas",
                             Edited = false,
                             LentTo = "Brandon Jacobs",
@@ -84,7 +146,7 @@ namespace MIssion6_jacobs27.Migrations
                         new
                         {
                             MovieID = 3,
-                            Category = "Sci-FI",
+                            CategoryID = 1,
                             Director = "George Lucas",
                             Edited = false,
                             LentTo = "Brandon Jacobs",
@@ -93,6 +155,15 @@ namespace MIssion6_jacobs27.Migrations
                             Title = "Starwars: Episode 3 - Revenge of the Sith",
                             Year = "2005"
                         });
+                });
+
+            modelBuilder.Entity("MIssion6_jacobs27.Models.Movie", b =>
+                {
+                    b.HasOne("MIssion6_jacobs27.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

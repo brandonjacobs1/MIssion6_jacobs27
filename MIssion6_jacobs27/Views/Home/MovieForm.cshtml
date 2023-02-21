@@ -3,6 +3,7 @@
 }
 <h1>@ViewData["Title"]</h1>
 
+
 @model Movie
 <form method="post">
     <label asp-for="Title">Title</label>
@@ -22,8 +23,15 @@
         <option>G</option>
     </select>
     <br />
-    <label asp-for="Category">Category</label>
-    <input asp-for="Category" required />
+    <label asp-for="CategoryID">Category</label>
+    <select  asp-for="CategoryID" required>
+        
+            @foreach (Category cat in ViewBag.Categories)
+            {
+                <option value="@cat.CategoryID.">@cat.CategoryName</option>
+            }
+        
+    </select>
     <br />
     <label asp-for="Edited">Edited</label>
     <input asp-for="Edited" />
