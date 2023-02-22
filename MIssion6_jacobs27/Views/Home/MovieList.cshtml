@@ -31,8 +31,8 @@
             <td>@movie.Edited</td>
             <td>@movie.LentTo</td>
             <td>@movie.Notes</td>
-            <td><a asp-controller="Home" asp-action="edit" asp-route-id="@movie.MovieID">Edit</a></td>
-            <td><a asp-controller="Home" asp-action="delete" asp-route-id="@movie.MovieID">Delete</a></td>
+            <td><a asp-controller="Home" asp-action="edit" asp-route-movieId="@movie.MovieID">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="delete" asp-route-movieId="@movie.MovieID">Delete</a></td>
         </tr>
             }
     </tbody>

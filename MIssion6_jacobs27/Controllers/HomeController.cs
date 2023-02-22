@@ -68,11 +68,11 @@ namespace MIssion6_jacobs27.Controllers
             return View(movies);
         }
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int movieId)
         {
             ViewBag.Categories = _movieContext.Category.ToList();
 
-            Movie movie = _movieContext.Movies.Single(x => x.MovieID == id);
+            var movie = _movieContext.Movies.Single(x => x.MovieID == movieId);
 
             return View("MovieForm", movie);
         }
@@ -85,9 +85,9 @@ namespace MIssion6_jacobs27.Controllers
             return RedirectToAction("MovieList");
         }
         [HttpGet]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int movieId)
         {
-            Movie movie = _movieContext.Movies.Single(movie => movie.MovieID == id);
+            Movie movie = _movieContext.Movies.Single(movie => movie.MovieID == movieId);
 
             return View(movie);
         }
