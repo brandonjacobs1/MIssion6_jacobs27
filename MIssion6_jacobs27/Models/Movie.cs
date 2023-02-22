@@ -21,7 +21,7 @@ namespace MIssion6_jacobs27.Models
         public string Director { get; set; }
         [Required]
         public string Rating { get; set; }
-        [Required]
+        
         public string LentTo { get; set; }
         public bool Edited { get; set; }
         [StringLength(25)]

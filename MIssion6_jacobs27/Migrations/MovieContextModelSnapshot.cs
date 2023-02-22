@@ -26,7 +26,7 @@ namespace MIssion6_jacobs27.Migrations
 
                     b.HasKey("CategoryID");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
 
                     b.HasData(
                         new

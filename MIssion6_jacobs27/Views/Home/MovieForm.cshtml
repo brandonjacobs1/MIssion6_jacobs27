@@ -28,7 +28,7 @@
         
             @foreach (Category cat in ViewBag.Categories)
             {
-                <option value="@cat.CategoryID.">@cat.CategoryName</option>
+                <option value="@cat.CategoryID">@cat.CategoryName</option>
             }
         
     </select>
@@ -43,5 +43,5 @@
     <input asp-for="Notes" />
     <br />
     <div asp-validation-summary="All"></div>
-    <button type="submit">Add Movie</button>
+    <button type="submit">Save Movie</button>
 </form>

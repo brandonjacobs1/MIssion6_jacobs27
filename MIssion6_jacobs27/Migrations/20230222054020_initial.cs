@@ -7,7 +7,7 @@ namespace MIssion6_jacobs27.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
                 columns: table => new
                 {
                     CategoryID = table.Column<int>(nullable: false)
@@ -16,7 +16,7 @@ namespace MIssion6_jacobs27.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                    table.PrimaryKey("PK_Category", x => x.CategoryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,55 +38,55 @@ namespace MIssion6_jacobs27.Migrations
                 {
                     table.PrimaryKey("PK_Movies", x => x.MovieID);
                     table.ForeignKey(
-                        name: "FK_Movies_Categories_CategoryID",
+                        name: "FK_Movies_Category_CategoryID",
                         column: x => x.CategoryID,
-                        principalTable: "Categories",
+                        principalTable: "Category",
                         principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 1, "Action/Adventure" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 2, "Comedy" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 3, "Drama" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 4, "Family" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 5, "Horror/Suspense" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 6, "Miscellaneous" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 7, "Television" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 8, "VHS" });
 
             migrationBuilder.InsertData(
-                table: "Categories",
+                table: "Category",
                 columns: new[] { "CategoryID", "CategoryName" },
                 values: new object[] { 9, "Other" });
 
@@ -117,7 +117,7 @@ namespace MIssion6_jacobs27.Migrations
                 name: "Movies");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Category");
         }
     }
 }

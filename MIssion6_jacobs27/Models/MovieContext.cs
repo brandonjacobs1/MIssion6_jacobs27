@@ -14,7 +14,7 @@ namespace MIssion6_jacobs27.Models
         }
         
         public DbSet<Movie> Movies { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         //seeding
         protected override void OnModelCreating(ModelBuilder mb)
